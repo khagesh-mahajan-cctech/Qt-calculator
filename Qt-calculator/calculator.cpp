@@ -27,6 +27,14 @@ calculator::~calculator()
 void calculator::on_digit_pressed()
 {
     QPushButton* button = (QPushButton*) sender();
-    ui->label_2->setText(button->text());
+    if(ui->label_2->text() == "0")
+    {
+        ui->label_2->setText(button->text());
+    }
+    else
+    {
+        ui->label_2->setText(ui->label_2->text() + button->text());
+    }
+
 }
 
