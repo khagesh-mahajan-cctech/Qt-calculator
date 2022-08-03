@@ -21,6 +21,8 @@ calculator::calculator(QWidget *parent)
     connect(ui->button_plus_minus, SIGNAL(released()), this, SLOT(unary_operation()));
     connect(ui->button_percent, SIGNAL(released()), this, SLOT(unary_operation()));
     connect(ui->button_reciprocol, SIGNAL(released()), this, SLOT(unary_operation()));
+
+    connect(ui->button_cancel, SIGNAL(released()), this, SLOT(clear_operation()));
 }
 
 calculator::~calculator()
@@ -68,4 +70,10 @@ void calculator::unary_operation()
         newLabel = QString::number(labelNumber, 'g', 16);
         ui->label_2->setText(newLabel);
     }
+}
+
+void calculator::clear_operation()
+{
+    ui->label_2->setText("0");
+    ui->label_1->setText("0");
 }
