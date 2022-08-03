@@ -21,5 +21,6 @@ private:
 private slots:
     void on_digit_pressed();
     void unary_operation();
+    void clear_operation();
 };
 #endif // CALCULATOR_H
