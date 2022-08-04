@@ -59,11 +59,9 @@ void calculator::on_digit_pressed()
         labelNum = (button->text()).toDouble();
         isUserTypingSecondNum = true;
         newLabel = QString::number(labelNum, 'g', 16);
-
     }
     else
     {
-
         if(ui->label_2->text() == "0")
         {
             newLabel = button->text();
@@ -73,10 +71,8 @@ void calculator::on_digit_pressed()
            labelNum = (ui->label_2->text() + button->text()).toDouble();
 
            newLabel = QString::number(labelNum, 'g', 16);
-
         }
     }
-
 
     ui->label_2->setText(newLabel);
 
@@ -113,6 +109,14 @@ void calculator::unary_operation()
 
 void calculator::clear_operation()
 {
+    ui->button_add->setChecked(false);
+    ui->button_sub->setChecked(false);
+    ui->button_multiply->setChecked(false);
+    ui->button_divide->setChecked(false);
+
+    label_1_disp = "";
+    isUserTypingSecondNum = false;
+
     ui->label_2->setText("0");
     ui->label_1->setText("0");
 }
