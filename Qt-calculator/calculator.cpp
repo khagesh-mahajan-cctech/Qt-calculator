@@ -30,10 +30,16 @@ calculator::calculator(QWidget *parent)
     connect(ui->button_cancel, SIGNAL(released()), this, SLOT(clear_operation()));
 
     connect(ui->button_add, SIGNAL(released()), this, SLOT(binary_operation()));
+    connect(ui->button_sub, SIGNAL(released()), this, SLOT(binary_operation()));
+    connect(ui->button_multiply, SIGNAL(released()), this, SLOT(binary_operation()));
+    connect(ui->button_divide, SIGNAL(released()), this, SLOT(binary_operation()));
 
     connect(ui->button_equal_to, SIGNAL(released()), this, SLOT(on_button_equal_to_released()));
 
     ui->button_add->setCheckable(true);
+    ui->button_sub->setCheckable(true);
+    ui->button_multiply->setCheckable(true);
+    ui->button_divide->setCheckable(true);
 }
 
 calculator::~calculator()
@@ -46,14 +52,13 @@ void calculator::on_digit_pressed()
     double labelNum;
     QString newLabel;
     QPushButton* button = (QPushButton*) sender();
-    if(ui->button_add->isChecked() && !isUserTypingSecondNum)
+    if((ui->button_add->isChecked() || ui->button_sub->isChecked() ||
+        ui->button_multiply->isChecked() || ui->button_divide->isChecked()) && (!isUserTypingSecondNum))
     {
         firstNum = (ui->label_2->text()).toDouble();
         labelNum = (button->text()).toDouble();
-
         isUserTypingSecondNum = true;
         newLabel = QString::number(labelNum, 'g', 16);
-
 
     }
     else
@@ -138,7 +143,37 @@ void calculator::on_button_equal_to_released()
         ui->label_2->setText(newLabel);
         ui->button_add->setChecked(false);
     }
+    else if(ui->button_sub->isChecked())
+    {
+        ui->label_1->setText(label_1_disp + QString::number(secondNum, 'g', 16) + " =");
+        result = firstNum - secondNum;
+        newLabel = QString::number(result, 'g', 16);
+        ui->label_2->setText(newLabel);
+        ui->button_sub->setChecked(false);
+    }
+    else if(ui->button_multiply->isChecked())
+    {
+        ui->label_1->setText(label_1_disp + QString::number(secondNum, 'g', 16) + " =");
+        result = firstNum * secondNum;
+        newLabel = QString::number(result, 'g', 16);
+        ui->label_2->setText(newLabel);
+        ui->button_multiply->setChecked(false);
+    }
+    else if(ui->button_divide->isChecked())
+    {
+        if(secondNum != 0)
+        {
+            ui->label_1->setText(label_1_disp + QString::number(secondNum, 'g', 16) + " =");
+            result = firstNum / secondNum;
+            newLabel = QString::number(result, 'g', 16);
+            ui->label_2->setText(newLabel);
+            ui->button_divide->setChecked(false);
+        }
+        else
+        {
+            ui->label_2->setText("Cannot Devide By Zero");
+        }
+    }
     isUserTypingSecondNum = false;
-
 }
 
