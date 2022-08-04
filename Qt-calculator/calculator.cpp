@@ -62,9 +62,9 @@ void calculator::on_digit_pressed()
     }
     else
     {
-        if(ui->label_2->text() == "0")
+        if(ui->label_2->text().contains('.') && button->text() == "0")
         {
-            newLabel = button->text();
+            newLabel = ui->label_2->text() + button->text();
         }
         else
         {
@@ -179,5 +179,14 @@ void calculator::on_button_equal_to_released()
         }
     }
     isUserTypingSecondNum = false;
+}
+
+
+void calculator::on_button_decimal_released()
+{
+    if(!(ui->label_2->text().contains('.')))
+    {
+        ui->label_2->setText(ui->label_2->text() + '.');
+    }
 }
 
