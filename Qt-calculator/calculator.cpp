@@ -139,3 +139,20 @@ void calculator::on_button_equal_to_released()
     ui->label_2->setText(QString::number(result, 'g', 16));
 }
 
+
+void calculator::on_button_backspace_released()
+{
+    QString text = ui->label_2->text();
+    text.chop(1);
+    text = text.trimmed();
+    if(text.isEmpty())
+    {
+        ui->label_2->setText("0");
+    }
+    else
+    {
+        ui->label_2->setText(text);
+    }
+
+}
+
