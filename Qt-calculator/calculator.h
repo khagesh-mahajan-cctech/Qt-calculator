@@ -26,5 +26,6 @@ private slots:
     void on_button_decimal_released();
     void bracket_pressed();
     void on_button_equal_to_released();
+    void on_button_backspace_released();
 };
 #endif // CALCULATOR_H
