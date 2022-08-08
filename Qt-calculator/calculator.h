@@ -23,7 +23,8 @@ private slots:
     void unary_operation();
     void clear_operation();
     void binary_operation();
-    void on_button_equal_to_released();
     void on_button_decimal_released();
+    void bracket_pressed();
+    void on_button_equal_to_released();
 };
 #endif // CALCULATOR_H

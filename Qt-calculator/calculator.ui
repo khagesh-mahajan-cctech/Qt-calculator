@@ -244,7 +244,7 @@
 }</string>
     </property>
     <property name="text">
-     <string>÷</string>
+     <string>/</string>
     </property>
    </widget>
    <widget class="QPushButton" name="button_9">
@@ -347,7 +347,7 @@
 }</string>
     </property>
     <property name="text">
-     <string>X</string>
+     <string>*</string>
     </property>
    </widget>
    <widget class="QPushButton" name="button_6">
