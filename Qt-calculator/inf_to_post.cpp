@@ -9,10 +9,6 @@ std::string scanNum(size_t &i, std::string exp)
     {
         value = value + exp[i++];
     }
-//    while((exp[i] != ' ' || exp[i] != '+' || exp[i] != '-' || exp[i] != '*' || exp[i] != '/' || exp[i] != '^') && i < exp.length())
-//    {
-//        value = value + exp[i++];
-//    }
     return value;
 }
 int precedence(char c)
@@ -28,66 +24,6 @@ int precedence(char c)
     else
         return -1;
 }
-
-int priority(char ch)
-{
-    if(ch == '+' || ch == '-')
-        return 1;
-
-    if(ch == '*' || ch == '/')
-        return 2;
-
-    return 0;
-}
-
-//std::string infixToPostfix(std::string exp)
-//{
-//    std::stack<int> stk;
-//    std::string postfix = "";
-
-//    for(size_t i=0; i < exp.length() ; i++)
-//    {
-//        if(exp[i] >= '0' && exp[i] <= '9')
-//        {
-//            postfix = postfix + scanNum(i,exp);
-//            postfix += exp[i];
-//            postfix = postfix + " ";
-//        }
-//        else if(exp[i] == '(')
-//        {
-//            stk.push(exp[i]);
-//        }
-//        else if(exp[i] == ')')
-//        {
-//            while(stk.top() != '(')
-//            {
-//                postfix += stk.top();
-//                postfix = postfix + " ";
-//                stk.pop();
-//            }
-//            stk.top();
-//        }
-//        else
-//        {
-//            while(!stk.empty() && priority(exp[i]) <= priority(stk.top()))
-//            {
-//                postfix += stk.top();
-//                postfix = postfix + " ";
-//                stk.top();
-//            }
-//            stk.push(exp[i]);
-//        }
-//    }
-//    while(!stk.empty())
-//    {
-//        postfix += stk.top();
-//        postfix = postfix + " ";
-//        stk.pop();
-//    }
-//    std::cout << postfix;
-//    return postfix;
-//}
-
 
 
 std::string infixToPostfix(std::string exp)
@@ -137,7 +73,6 @@ std::string infixToPostfix(std::string exp)
         result = result + " ";
         stk.pop();
     }
-    std::cout << result;
     return result;
 }
 
