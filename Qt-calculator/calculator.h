@@ -19,13 +19,14 @@ private:
     Ui::calculator *ui;
 
 private slots:
-    void on_digit_pressed();
+//    void on_digit_pressed();
     void unary_operation();
     void clear_operation();
-    void binary_operation();
+//    void binary_operation();
     void on_button_decimal_released();
-    void bracket_pressed();
+//    void bracket_pressed();
     void on_button_equal_to_released();
     void on_button_backspace_released();
+    void set_text();
 };
 #endif // CALCULATOR_H

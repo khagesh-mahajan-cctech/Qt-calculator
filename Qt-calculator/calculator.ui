@@ -56,6 +56,9 @@
       <pointsize>18</pointsize>
      </font>
     </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::NoContextMenu</enum>
+    </property>
     <property name="styleSheet">
      <string notr="true">QLabel{
 	border : 1px solid black;
@@ -64,7 +67,7 @@
 }</string>
     </property>
     <property name="text">
-     <string>0</string>
+     <string/>
     </property>
     <property name="alignment">
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
