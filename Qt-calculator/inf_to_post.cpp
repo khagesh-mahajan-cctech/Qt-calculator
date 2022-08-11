@@ -132,6 +132,7 @@ double evaluate(std::string expression)
 {
 
     std::string exp = infixToPostfix(expression);
+    std::cout << exp;
     return postFixEval(exp);
 
 }
