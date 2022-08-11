@@ -12,10 +12,12 @@ SOURCES += \
     inf_to_post.cpp \
     logic.cpp \
     main.cpp \
-    calculator.cpp
+    calculator.cpp \
+    test.cpp
 
 HEADERS += \
     calculator.h \
+    catch.hpp \
     inf_to_post.h \
     logic.h
 
