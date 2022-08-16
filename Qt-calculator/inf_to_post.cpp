@@ -1,23 +1,23 @@
 #include <stack>
 #include <iostream>
 
-std::string scanNum(size_t &i, std::string exp)
+std::string scanDigits(size_t &i, std::string expression)
 {
-    std::string value;
-    value = exp[i++];
-    while(exp[i] != ' ' && i < exp.length())
+    std::string numbers;
+    numbers = expression[i++];
+    while(expression[i] != ' ' && i < expression.length())
     {
-        value = value + exp[i++];
+        numbers = numbers + expression[i++];
     }
-    return value;
+    return numbers;
 }
-int precedence(char c)
+int precedence(char opr)
 {
-    if(c == '/' || c == '*')
+    if(opr == '/' || opr == '*')
     {
         return 2;
     }
-    else if(c == '+' || c == '-')
+    else if(opr == '+' || opr == '-')
     {
         return 1;
     }
@@ -26,20 +26,20 @@ int precedence(char c)
 }
 
 
-std::string infixToPostfix(std::string exp)
+std::string infixToPostfix(std::string infixExpression)
 {
     std::stack<char> stk;
     std::string result;
 
-    for(size_t i=0; i < exp.length() ; i++)
+    for(size_t i=0; i < infixExpression.length() ; i++)
     {
-        char c = exp[i];
+        char c = infixExpression[i];
 
         if(c == ' ')
             continue;
         else if( c >= '0' && c <= '9' )
         {
-            result = result + scanNum(i,exp);
+            result = result + scanDigits(i,infixExpression);
             result = result + " ";
         }
         else if(c == '(')
@@ -58,7 +58,7 @@ std::string infixToPostfix(std::string exp)
         }
         else
         {
-            while(!stk.empty() && precedence(exp[i]) <= precedence(stk.top()))
+            while(!stk.empty() && precedence(infixExpression[i]) <= precedence(stk.top()))
             {
                 result = result + stk.top();
                 result = result + " ";
@@ -76,62 +76,62 @@ std::string infixToPostfix(std::string exp)
     return result;
 }
 
-bool isOperator(char ch)
+bool isOperator(char opr)
 {
-    if(ch == '+' || ch == '-' || ch == '*' || ch == '/')
+    if(opr == '+' || opr == '-' || opr == '*' || opr == '/')
         return 1;
     else
         return 0;
 }
 
-int isOperand(char ch)
+int isOperand(char operand)
 {
-    if(ch >= '0' && ch <= '9')
+    if(operand >= '0' && operand <= '9')
         return 1;
     else
         return 0;
 }
 
-double operation(double a, double b, char op)
+double operation(double num_one, double num_two, char opr)
 {
-    if(op == '+')
-        return b + a;
-    else if(op == '-')
-        return b - a;
-    else if(op == '*')
-        return b * a;
-    else if(op == '/')
-        return b / a;
+    if(opr == '+')
+        return num_two + num_one;
+    else if(opr == '-')
+        return num_two - num_one;
+    else if(opr == '*')
+        return num_two * num_one;
+    else if(opr == '/')
+        return num_two / num_one;
     else
         return INT_MIN;
 }
 
-double postFixEval(std::string exp)
+double postFixEval(std::string postfixExp)
 {
-    double a, b;
+    double num_one, num_two;
     std::stack<double> st;
-    for(size_t i=0; i < exp.length(); i++)
+    for(size_t i=0; i < postfixExp.length(); i++)
     {
-        if(isOperator(exp[i]) == 1)
+        if(isOperator(postfixExp[i]) == 1)
         {
-               a = st.top();
+               num_one = st.top();
                st.pop();
-               b = st.top();
+               num_two = st.top();
                st.pop();
-               st.push(operation(a, b, exp[i]));
+               st.push(operation(num_one, num_two, postfixExp[i]));
         }
-        else if(isOperand(exp[i]) == 1)
+        else if(isOperand(postfixExp[i]) == 1)
         {
-            st.push(stod(scanNum(i, exp)));
+            st.push(stod(scanDigits(i, postfixExp)));
         }
     }
     return st.top();
 }
 
-double evaluate(std::string expression)
+double evaluate(std::string infixExpression)
 {
 
-    std::string exp = infixToPostfix(expression);
-    return postFixEval(exp);
+    std::string postfixExp = infixToPostfix(infixExpression);
+    return postFixEval(postfixExp);
 
 }

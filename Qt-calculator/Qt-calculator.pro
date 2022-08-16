@@ -10,16 +10,16 @@ CONFIG += c++17
 
 SOURCES += \
     inf_to_post.cpp \
-    logic.cpp \
     main.cpp \
     calculator.cpp \
-    test.cpp
+    test.cpp \
+    unary_operation.cpp
 
 HEADERS += \
     calculator.h \
     catch.hpp \
     inf_to_post.h \
-    logic.h
+    unary_operation.h
 
 FORMS += \
     calculator.ui

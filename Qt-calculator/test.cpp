@@ -1,6 +1,6 @@
 #include "catch.hpp"
 #include "inf_to_post.h"
-#include "logic.h"
+#include "unary_operation.h"
 
 TEST_CASE("Precedence of operator test")
 {
