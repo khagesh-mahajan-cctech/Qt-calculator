@@ -24,6 +24,7 @@ calculator::calculator(QWidget *parent)
     connect(ui->button_plus_minus, SIGNAL(released()), this, SLOT(unary_operation()));
     connect(ui->button_percent, SIGNAL(released()), this, SLOT(unary_operation()));
     connect(ui->button_reciprocol, SIGNAL(released()), this, SLOT(unary_operation()));
+    connect(ui->button_sq_root, SIGNAL(released()), this, SLOT(unary_operation()));
 
     connect(ui->button_cancel, SIGNAL(released()), this, SLOT(clear_operation()));
 
