@@ -86,10 +86,11 @@ void calculator::binary_operation()
 
 void calculator::on_button_decimal_released()
 {
-    if(!(ui->label_2->text().contains('.')))
-    {
-        ui->label_2->setText(ui->label_2->text() + '.');
-    }
+    on_digit_pressed();
+//    if(!(ui->label_2->text().contains('.')))
+//    {
+//        ui->label_2->setText(ui->label_2->text() + '.');
+//    }
 }
 
 void calculator::bracket_pressed()

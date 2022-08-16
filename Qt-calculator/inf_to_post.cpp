@@ -122,7 +122,7 @@ double postFixEval(std::string exp)
         }
         else if(isOperand(exp[i]) == 1)
         {
-            st.push(stoi(scanNum(i, exp)));
+            st.push(stod(scanNum(i, exp)));
         }
     }
     return st.top();
@@ -132,7 +132,6 @@ double evaluate(std::string expression)
 {
 
     std::string exp = infixToPostfix(expression);
-    std::cout << exp;
     return postFixEval(exp);
 
 }
