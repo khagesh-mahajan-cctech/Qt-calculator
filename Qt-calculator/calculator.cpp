@@ -1,7 +1,7 @@
 #include "calculator.h"
 #include "ui_calculator.h"
 #include "inf_to_post.h"
-#include "logic.h"
+#include "unary_operation.h"
 #include <QDebug>
 
 calculator::calculator(QWidget *parent)
